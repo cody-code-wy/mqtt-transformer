@@ -1,6 +1,6 @@
 import mqtt from 'mqtt';
 
-var client = mqtt.connect('mqtt://rabbitmq-service:1883',{clientId:'mqttjs01'});
+var client = mqtt.connect('mqtt://rabbitmq-service:1883',{clientId:'mqttjs02'});
 client.on("connect", () => {
   console.log('connected')
   client.subscribe("testtopic",{qos: 1})
