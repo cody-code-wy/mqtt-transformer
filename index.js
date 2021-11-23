@@ -6,7 +6,7 @@ client.on("connect", () => {
   client.subscribe("testtopic",{qos: 1})
 });
 client.on("error", (e) => { console.log(`Can't connect ${e}`) });
-client.on("message", (topic, messsage, packet) => {
+client.on("message", (topic, message, packet) => {
   console.log(`topic is ${topic}`);
   console.log(`message is ${message}`);
 })
