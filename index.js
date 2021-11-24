@@ -1,7 +1,7 @@
 import mqtt from 'mqtt';
 
-const inTopic = `openflowx/${ process.env.EVENT_NAME || "in" }`
-const outTopic = `openflowx/${ process.env.EVENT_NAME || "out" }`
+const inTopic = `openflowx/${ process.env.IN_EVENT_NAME || "in" }`
+const outTopic = `openflowx/${ process.env.OUT_EVENT_NAME || "out" }`
 
 var client = mqtt.connect('mqtt://rabbitmq-service:1883',{clientId:'mqttjs02'});
 client.on("connect", () => {
