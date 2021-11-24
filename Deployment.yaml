@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqtt-transformer-git
+  labels:
+    app: mqtt-transformer-git
+  annotations:
+    image.openshift.io/triggers: >-
+      [{"from":{"kind":"ImageStreamTag","name":"mqtt-transformer-git:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"mqtt-transformer-git\")].image","pause":"false"}]
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: mqtt-transformer-git
+  template:
+    metadata:
+      labels:
+        app: mqtt-transformer-git
+    spec:
+      containers:
+        - name: mqtt-transformer-git
+          image: mqtt-transformer-git:latest

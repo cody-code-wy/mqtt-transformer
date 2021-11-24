@@ -9,7 +9,7 @@ client.on("connect", () => {
   client.subscribe(topic,{qos: 1})
 });
 client.on("error", (e) => { console.log(`Can't connect ${e}`) });
-client.on("message", (inTopic, message, packet) => {
+client.on("message", (topic, message, packet) => {
   console.log(`got ${topic} message, sendng to ${outTopic}`);
   client.publish(outTopic, message);
 })

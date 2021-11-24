@@ -1,0 +1,23 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: mqtt-transformer-git
+  labels:
+    app: mqtt-transformer-git
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'mqtt-transformer-git:latest'
+  successfusBuildsHistoryLimit: 1
+  failedBuildsHistoryLimit: 1
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Containerfile
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/cody-code-wy/mqtt-transformer.git'
+    contextDir: /
+  runPolicy: Serial
